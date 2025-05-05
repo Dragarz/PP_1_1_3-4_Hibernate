@@ -7,7 +7,8 @@ import java.io.IOException;
 import java.util.List;
 
 public class UserServiceImpl implements UserService, Closeable {
-    private UserDaoJDBCImpl jdbc = new UserDaoJDBCImpl();
+    private final UserDaoJDBCImpl jdbc = new UserDaoJDBCImpl();
+
     public void createUsersTable() {
         jdbc.createUsersTable();
     }
