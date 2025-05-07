@@ -25,4 +25,7 @@ public interface UserDao extends Closeable {
     List<User> getAllUsers();
 
     void cleanUsersTable();
+
+    @Override
+    void close();
 }

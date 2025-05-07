@@ -1,8 +1,5 @@
 package jm.task.core.jdbc.util;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
 import jm.task.core.jdbc.model.User;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -13,33 +10,9 @@ public class Util {
     private static final String PASSWORD = "erd";
 
     private static final SessionFactory sessionFactory = buildHibernateConnection();
-    private static final Connection connection = buildJDBCConnection();
-
-    public static Connection buildJDBCConnection() {
-        try {
-            return DriverManager.getConnection(DB_URL, USER, PASSWORD);
-        } catch (SQLException e) {
-            System.err.println("Ошибка при подключении к базе данных или выполнении запроса");
-            e.printStackTrace();
-        }
-        return null;
-    }
-
-    public static Connection getJDBCConnection() {
-        return connection;
-    }
 
     public static SessionFactory getHibernateConnection() {
         return sessionFactory;
-    }
-
-    public static void closeConnection() {
-        try {
-            assert connection != null;
-            connection.close();
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-        }
     }
 
     public static void closeSessionFactory() {

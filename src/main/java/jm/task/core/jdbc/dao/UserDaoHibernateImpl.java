@@ -26,7 +26,7 @@ public class UserDaoHibernateImpl implements UserDao {
             session.createNativeQuery(SQL_CREATE_TABLE).executeUpdate();
             transaction.commit();
         } catch (Exception e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
             if(transaction != null) {
                 transaction.rollback();
             }
@@ -43,7 +43,7 @@ public class UserDaoHibernateImpl implements UserDao {
             session.createNativeQuery(SQL_DROP_TABLE).executeUpdate();
             transaction.commit();
         } catch (Exception e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
             if(transaction != null) {
                 transaction.rollback();
             }
@@ -60,6 +60,7 @@ public class UserDaoHibernateImpl implements UserDao {
             session.save(new User(name, lastName, age));
             transaction.commit();
         } catch (Exception e) {
+            System.out.println(e.getMessage());
             if(transaction != null) {
                 transaction.rollback();
             }
@@ -80,6 +81,7 @@ public class UserDaoHibernateImpl implements UserDao {
             }
             transaction.commit();
         } catch (Exception e) {
+            System.out.println(e.getMessage());
             if(transaction != null) {
                 transaction.rollback();
             }
@@ -104,6 +106,7 @@ public class UserDaoHibernateImpl implements UserDao {
             session.createQuery("DELETE FROM User").executeUpdate();
             transaction.commit();
         } catch (Exception e) {
+            System.out.println(e.getMessage());
             if(transaction != null) {
                 transaction.rollback();
             }
